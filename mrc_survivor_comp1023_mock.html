@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>COMP 1023 Mock Final Question - MRC Survivor Analysis</title>
+  <style>
+    :root {
+      --bg: #f7f7fb;
+      --paper: #ffffff;
+      --ink: #1f2937;
+      --muted: #6b7280;
+      --border: #d1d5db;
+      --accent: #7c3aed;
+      --accent-soft: #f3e8ff;
+      --code-bg: #111827;
+      --code-ink: #e5e7eb;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.55;
+    }
+
+    .page {
+      max-width: 980px;
+      margin: 32px auto;
+      padding: 48px;
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+    }
+
+    header {
+      border-bottom: 3px solid var(--accent);
+      padding-bottom: 18px;
+      margin-bottom: 28px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 30px;
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      margin-top: 34px;
+      padding: 10px 14px;
+      font-size: 22px;
+      background: var(--accent-soft);
+      border-left: 5px solid var(--accent);
+      border-radius: 8px;
+    }
+
+    h3 {
+      margin-top: 24px;
+      font-size: 18px;
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .editable-note {
+      margin-top: 12px;
+      padding: 10px 12px;
+      border: 1px dashed var(--accent);
+      border-radius: 10px;
+      background: #faf5ff;
+      color: #4c1d95;
+      font-size: 14px;
+    }
+
+    p {
+      margin: 12px 0;
+    }
+
+    ul {
+      margin-top: 8px;
+    }
+
+    code {
+      padding: 2px 5px;
+      border-radius: 5px;
+      background: #f3f4f6;
+      font-family: Consolas, Menlo, Monaco, monospace;
+      font-size: 0.95em;
+    }
+
+    pre {
+      margin: 14px 0;
+      padding: 16px;
+      overflow-x: auto;
+      border-radius: 12px;
+      background: var(--code-bg);
+      color: var(--code-ink);
+      font-family: Consolas, Menlo, Monaco, monospace;
+      font-size: 14px;
+      line-height: 1.45;
+      white-space: pre;
+    }
+
+    .blank {
+      display: inline-block;
+      min-width: 330px;
+      border-bottom: 2px solid var(--ink);
+      height: 1.1em;
+      vertical-align: baseline;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 14px;
+    }
+
+    th,
+    td {
+      border: 1px solid var(--border);
+      padding: 8px 10px;
+      text-align: left;
+    }
+
+    th {
+      background: #f9fafb;
+    }
+
+    .dataset-wrapper {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin: 14px 0;
+    }
+
+    .dataset-wrapper table {
+      margin: 0;
+      min-width: 920px;
+    }
+
+    .marks {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .expected-output {
+      border: 2px solid var(--accent);
+      border-radius: 14px;
+      padding: 18px;
+      background: #fbfaff;
+    }
+
+    .print-hint {
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid var(--border);
+      padding-top: 16px;
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .page {
+        margin: 0;
+        max-width: none;
+        border: none;
+        box-shadow: none;
+        border-radius: 0;
+      }
+
+      .editable-note,
+      .print-hint {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page" contenteditable="true">
+    <header>
+      <h1>COMP 1023 Mock Final Question</h1>
+      <div class="meta">Topic: MRC Survivor Performance Analysis · Total: 21 points</div>
+      <div class="editable-note">This HTML file is editable. You can click anywhere in the question body and modify the wording, code, marks, or dataset directly.</div>
+    </header>
+
+    <h2>Problem X <span class="marks">[21 points]</span> MRC Survivor Performance Analysis</h2>
+
+    <p>
+      MRC has just won the <strong>COA 2026 Championship</strong>. As an analyst, you are asked to analyze the performance of the survivor-side players:
+    </p>
+
+    <pre>["XiaoD", "XiaoX", "Huaci", "Nanako"]</pre>
+
+    <p>Each row represents one player’s performance in one round.</p>
+
+    <div class="dataset-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Round</th>
+            <th>Player</th>
+            <th>Character</th>
+            <th>DecodeProgress</th>
+            <th>ContainTime</th>
+            <th>RescueAttempts</th>
+            <th>SuccessfulRescues</th>
+            <th>Escaped</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>XiaoD</td><td>Mercenary</td><td>43</td><td>92</td><td>2</td><td>2</td><td>1</td></tr>
+          <tr><td>1</td><td>XiaoX</td><td>Mechanic</td><td>118</td><td>35</td><td>0</td><td>0</td><td>1</td></tr>
+          <tr><td>1</td><td>Huaci</td><td>Seer</td><td>76</td><td>101</td><td>1</td><td>1</td><td>1</td></tr>
+          <tr><td>1</td><td>Nanako</td><td>Priestess</td><td>69</td><td>64</td><td>1</td><td>0</td><td>0</td></tr>
+          <tr><td>2</td><td>XiaoD</td><td>Forward</td><td>55</td><td>126</td><td>1</td><td>1</td><td>1</td></tr>
+          <tr><td>2</td><td>XiaoX</td><td>Explorer</td><td>134</td><td>42</td><td>0</td><td>0</td><td>1</td></tr>
+          <tr><td>2</td><td>Huaci</td><td>Patient</td><td>81</td><td>88</td><td>1</td><td>1</td><td>0</td></tr>
+          <tr><td>2</td><td>Nanako</td><td>Barmaid</td><td>74</td><td>73</td><td>1</td><td>1</td><td>1</td></tr>
+          <tr><td>3</td><td>XiaoD</td><td>Mercenary</td><td>39</td><td>110</td><td>2</td><td>1</td><td>0</td></tr>
+          <tr><td>3</td><td>XiaoX</td><td>Mechanic</td><td>127</td><td>28</td><td>0</td><td>0</td><td>1</td></tr>
+          <tr><td>3</td><td>Huaci</td><td>Seer</td><td>92</td><td>135</td><td>1</td><td>1</td><td>1</td></tr>
+          <tr><td>3</td><td>Nanako</td><td>Priestess</td><td>83</td><td>58</td><td>1</td><td>1</td><td>1</td></tr>
+          <tr><td>4</td><td>XiaoD</td><td>Forward</td><td>61</td><td>144</td><td>1</td><td>1</td><td>1</td></tr>
+          <tr><td>4</td><td>XiaoX</td><td>Lawyer</td><td>142</td><td>31</td><td>0</td><td>0</td><td>1</td></tr>
+          <tr><td>4</td><td>Huaci</td><td>Patient</td><td>88</td><td>97</td><td>1</td><td>0</td><td>0</td></tr>
+          <tr><td>4</td><td>Nanako</td><td>Barmaid</td><td>79</td><td>86</td><td>2</td><td>2</td><td>1</td></tr>
+          <tr><td>5</td><td>XiaoD</td><td>Mercenary</td><td>48</td><td>103</td><td>2</td><td>2</td><td>1</td></tr>
+          <tr><td>5</td><td>XiaoX</td><td>Mechanic</td><td>151</td><td>24</td><td>0</td><td>0</td><td>1</td></tr>
+          <tr><td>5</td><td>Huaci</td><td>Seer</td><td>95</td><td>116</td><td>1</td><td>1</td><td>1</td></tr>
+          <tr><td>5</td><td>Nanako</td><td>Priestess</td><td>72</td><td>70</td><td>1</td><td>1</td><td>0</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Assume this data is saved in a CSV file named:</p>
+    <pre>mrc_survivors.csv</pre>
+
+    <h2>Part (a) <span class="marks">[4 points]</span> Pandas Data Loading and Aggregation</h2>
+
+    <p>
+      Complete the following code to read the CSV file into a Pandas DataFrame named <code>mrc</code>.
+      Then create a Pandas DataFrame named <code>player_summary</code>, indexed by player name, containing the following columns:
+    </p>
+
+    <pre>["Avg Decode", "Avg Contain", "Total Rescues", "Escape Rate"]</pre>
+
+    <pre>import pandas as pd
+
+mrc: pd.DataFrame = ________________________________
+
+avg_decode = ________________________________
+avg_contain = ________________________________
+total_rescues = ________________________________
+escape_rate = ________________________________
+
+player_summary: pd.DataFrame = ________________________________</pre>
+
+    <h2>Part (b) <span class="marks">[5 points]</span> Survivor Impact Score</h2>
+
+    <p>MRC’s coaching staff defines a simplified <strong>Survivor Impact Score</strong> as follows:</p>
+
+    <pre>Impact Score = 0.4 × DecodeProgress
+             + 0.3 × ContainTime
+             + 20 × SuccessfulRescues
+             + 30 × Escaped</pre>
+
+    <p>
+      Add a new column named <code>"ImpactScore"</code> to <code>mrc</code>.
+      Then create a Pandas Series named <code>best_rounds</code> that stores each player’s highest single-round impact score.
+    </p>
+
+    <pre>mrc["ImpactScore"] = ____________________________________________
+
+best_rounds = ____________________________________________</pre>
+
+    <h2>Part (c) <span class="marks">[4 points]</span> Filtering Strong Rounds</h2>
+
+    <p>A round is considered a <strong>strong survivor round</strong> if:</p>
+
+    <pre>DecodeProgress >= 80
+or
+ContainTime >= 100
+or
+SuccessfulRescues >= 2</pre>
+
+    <p>
+      Create a DataFrame named <code>strong_rounds</code> containing only the rows satisfying the condition above.
+      Then print only the columns:
+    </p>
+
+    <pre>["Round", "Player", "Character", "ImpactScore"]</pre>
+
+    <pre>strong_rounds = ____________________________________________
+
+print(____________________________________________)</pre>
+
+    <h2>Part (d) <span class="marks">[8 points]</span> NumPy Matrix Analysis</h2>
+
+    <p>
+      The following NumPy array stores the <strong>contain time</strong> of the four players across five rounds.
+      Rows represent players in this order:
+    </p>
+
+    <pre>["XiaoD", "XiaoX", "Huaci", "Nanako"]</pre>
+
+    <p>Columns represent rounds 1 to 5.</p>
+
+    <pre>import numpy as np
+
+contain_matrix: np.ndarray = np.array([
+    [92, 126, 110, 144, 103],
+    [35, 42, 28, 31, 24],
+    [101, 88, 135, 97, 116],
+    [64, 73, 58, 86, 70]
+])</pre>
+
+    <p>
+      Complete the following tasks <strong>without using loops or comprehensions</strong>, except for the provided printing loop in Part (d)(iii).
+    </p>
+
+    <h3>Part (d)(i) <span class="marks">[2 points]</span></h3>
+    <p>Create a NumPy array named <code>player_avg_contain</code> containing each player’s average contain time.</p>
+
+    <pre>player_avg_contain = ________________________________</pre>
+
+    <h3>Part (d)(ii) <span class="marks">[3 points]</span></h3>
+    <p>
+      For each round, subtract the round average contain time from each player’s contain time.
+      The result should be a NumPy array named <code>centered_contain</code>.
+    </p>
+
+    <pre>round_avg = ________________________________
+centered_contain = ________________________________</pre>
+
+    <h3>Part (d)(iii) <span class="marks">[3 points]</span></h3>
+    <p>
+      Create a NumPy array named <code>top_player_each_round</code> containing the row index of the player with the highest contain time in each round.
+      Then use it to print the names of the top contain player in each round.
+    </p>
+
+    <p>Expected format:</p>
+
+    <pre>Round 1: Huaci
+Round 2: XiaoD
+Round 3: Huaci
+Round 4: XiaoD
+Round 5: Huaci</pre>
+
+    <pre>players: np.ndarray = np.array(["XiaoD", "XiaoX", "Huaci", "Nanako"])
+
+top_player_each_round = ________________________________
+
+for i in range(5):
+    print(____________________________________________)</pre>
+
+    <h2>Expected Output</h2>
+    <section class="expected-output">
+      <h3>Expected <code>player_summary</code> from Part (a)</h3>
+      <pre>        Avg Decode  Avg Contain  Total Rescues  Escape Rate
+Player                                                      
+Huaci          86.4        107.4              4          0.6
+Nanako         75.4         70.2              5          0.6
+XiaoD          49.2        115.0              7          0.8
+XiaoX         134.4         32.0              0          1.0</pre>
+
+      <h3>Expected <code>best_rounds</code> from Part (b)</h3>
+      <pre>Player
+Huaci     146.6
+Nanako    117.4
+XiaoD     137.6
+XiaoX     120.8
+Name: ImpactScore, dtype: float64</pre>
+
+      <h3>Expected top contain player output from Part (d)(iii)</h3>
+      <pre>Round 1: Huaci
+Round 2: XiaoD
+Round 3: Huaci
+Round 4: XiaoD
+Round 5: Huaci</pre>
+
+      <h3>Expected NumPy values from Part (d)</h3>
+      <p><strong>Expected <code>player_avg_contain</code>:</strong></p>
+      <pre>[115.   32.  107.4  70.2]</pre>
+
+      <p><strong>Expected <code>round_avg</code>:</strong></p>
+      <pre>[73.   82.25 82.75 89.5  78.25]</pre>
+
+      <p><strong>Expected <code>centered_contain</code>:</strong></p>
+      <pre>[[ 19.    43.75  27.25  54.5   24.75]
+ [-38.   -40.25 -54.75 -58.5  -54.25]
+ [ 28.     5.75  52.25   7.5   37.75]
+ [ -9.    -9.25 -24.75  -3.5   -8.25]]</pre>
+    </section>
+
+    <p class="print-hint">
+      Tip: Use your browser’s print function to save this editable HTML as a PDF, or edit the content directly in any text editor.
+    </p>
+  </main>
+</body>
+</html>
